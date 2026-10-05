@@ -1,6 +1,43 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+/*
+ * PROGRAM: PIN-based Door Lock System
+ * PSEUDOCODE:
+ *
+ * FUNCTION clear_buffer():
+ *     Discard characters from input buffer until newline or EOF
+ * END FUNCTION
+ *
+ * MAIN:
+ *     Set correct_pin = 9999, count = 3
+ *     WHILE count is between 1 and 3:
+ *         Prompt user for PIN
+ *         IF input is non-numeric:
+ *             Display error, clear buffer, decrement count
+ *         ELSE IF PIN is 0:
+ *             Exit program
+ *         ELSE IF PIN length is invalid (<1000 or >9999):
+ *             Display length error, clear buffer, decrement count
+ *
+ *         IF PIN equals correct_pin:
+ *             Display Menu (1: Open Door, 2: Change User, 3: Change PIN, 4: Exit)
+ *             WHILE running is true:
+ *                 Read user choice
+ *                 Process choice with SWITCH statement
+ *             Exit main loop
+ *         ELSE IF PIN is 4 digits but wrong:
+ *             Display wrong PIN message, decrement count
+ *
+ *         IF count >= 1:
+ *             Display remaining attempts
+ *         ELSE:
+ *             Display lockout message
+ *             Run 5-second animated sleep timer
+ *             Reset count to 3
+ *     END WHILE
+ */
+
 #ifdef _WIN32
     #include <windows.h>
     #define SLEEP(sec) Sleep((sec) * 1000)
@@ -90,8 +127,11 @@ int main(void) {
        } else {
             printf("No attempts remaining.\n\tSystem locked. Wait for 5 seconds and try again.\n\t\t");
             for(int secs = 5; secs > 0; secs--) {
-                SLEEP(1);
-                printf("%d...", secs);
+                printf("%d", secs);
+                for(int i = 0; i < 3; i++) {
+                    printf(".");
+                    SLEEP(0.33);
+                }
             }
             printf("\n\tYou can try again now or enter 0 to exit.\n");
             count = 3;
