@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdbool.h>
-
 /*
  * PROGRAM: PIN-based Door Lock System
  * PSEUDOCODE:
@@ -37,6 +34,9 @@
  *             Reset count to 3
  *     END WHILE
  */
+
+#include <stdio.h>
+#include <stdbool.h>
 
 #ifdef _WIN32
     #include <windows.h>

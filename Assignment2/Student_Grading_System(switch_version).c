@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /*
  * PSEUDOCODE:
  *
@@ -32,6 +30,8 @@
  *
  *   END PROGRAM
  */
+
+#include <stdio.h>
 
 void clear_buffer(void) {
     int c;
