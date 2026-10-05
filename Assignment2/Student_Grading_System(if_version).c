@@ -1,5 +1,35 @@
 #include <stdio.h>
 
+/*
+ * PSEUDOCODE:
+ *
+ * FUNCTION clear_buffer():
+ *   Read and discard characters from input stream until '\n' or EOF.
+ *
+ * MAIN:
+ *   Prompt and read student_count. Exit if invalid.
+ *
+ *   FOR count = 0 TO student_count - 1:
+ *     Prompt and read name, reg_no, marks.
+ *     IF any read fails: print error message, CALL clear_buffer(), EXIT with error.
+ *
+ *     // Determine Grade
+ *     IF marks >= 70 THEN grade = 'A'
+ *     ELSE IF marks >= 60 THEN grade = 'B'
+ *     ELSE IF marks >= 50 THEN grade = 'C'
+ *     ELSE IF marks >= 40 THEN grade = 'D'
+ *     ELSE grade = 'F'
+ *
+ *     // Determine Pass/Fail Status
+ *     pass_fail = (marks >= 40) ? "PASS" : "FAIL"
+ *
+ *     // Display Details
+ *     PRINT reg_no, name, grade, and pass_fail status.
+ *   END FOR
+ *
+ *   END PROGRAM
+ */
+
 void clear_buffer(void) {
     int c;
     while((c = getchar()) != '\n' && c != EOF);
