@@ -108,7 +108,7 @@ int main(void) {
                         running = false;
                         break;
                     case 4:
-                        printf("\nExisting System...\n");
+                        printf("\nExiting System...\n");
                         running = false;
                         break;
                     default:
