@@ -50,12 +50,13 @@ bool login() {
             }
         }
     }
+    return false;
 }
 
 void checkBalance() {
     char pin[50];
     printf("Enter PIN: \n");
-
+    clear_buffer();
     if (scanf(" %s", pin) == 1 && strcmp(correct_pin, pin) == 0) {
         printf("Dear customer, your account balance is %d.\n", balance);
     } else {
@@ -80,6 +81,7 @@ void deposit(int amount) {
         printf("Invalid amount.\n");
     } else {
         printf("\nEnter PIN to confirm deposit of %d: \n", amount);
+        clear_buffer();
         if (scanf(" %s", pin) == 1 && strcmp(correct_pin, pin) == 0) {
             balance += amount;
             printf("You have successfully deposited %d in your account.\n", amount);
@@ -101,6 +103,7 @@ void withdraw(int amount) {
             return;
         }
         printf("\nEnter PIN to confirm withdrawal of %d: \n", amount);
+        clear_buffer();
         if (scanf(" %s", pin) == 1 && strcmp(correct_pin, pin) == 0) {
             balance -= amount;
             printf("You have successfully withdrawn %d in your account.\n", amount);
@@ -130,6 +133,7 @@ int main()
                 case 1 : checkBalance();
                          break;
                 case 2 : printf("Enter amount you would like to withdraw: ");
+                         clear_buffer();
                          if (scanf("%d", &amount) == 1) {
                             withdraw(amount);
                          } else {
@@ -138,6 +142,7 @@ int main()
                          }
                          break;
                 case 3 : printf("Enter amount you would like to deposit: ");
+                         clear_buffer();
                          if (scanf("%d", &amount) == 1) {
                             deposit(amount);
                          } else {
